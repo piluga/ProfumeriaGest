@@ -1,0 +1,1254 @@
+        body {
+            margin: 0;
+            padding: 15px;
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #001229, #005A9C);
+            height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        /* GRIGLIA TASTI */
+        .sezione-tasti {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .tasto-fisico {
+            height: 16vh;
+            background: linear-gradient(to bottom, #002b5e, #001a3a);
+            border: 1px solid #4d88ff;
+            border-radius: 4px;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), inset 1px 1px 2px rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+        }
+
+            .tasto-fisico:active {
+                transform: translate(2px, 2px);
+                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6), inset 2px 2px 6px rgba(0, 0, 0, 0.5);
+            }
+
+        .icona-img {
+            max-width: 65%;
+            max-height: 65%;
+            object-fit: contain;
+            filter: drop-shadow(2px 3px 3px rgba(0,0,0,0.4));
+            transition: transform 0.2s;
+        }
+
+        .tasto-fisico:hover .icona-img {
+            transform: scale(1.1);
+        }
+
+        /* SCHERMO TOTALE */
+        .schermo-totale-container {
+            grid-column: span 4;
+            height: 16vh;
+            background-color: #c7c7ff;
+            border: 2px solid #ffffff;
+            border-radius: 4px;
+            box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.4), 2px 2px 5px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 25px;
+            transition: background-color 0.2s;
+        }
+
+            .schermo-totale-container:focus-within {
+                background-color: #ffffff;
+                box-shadow: inset 2px 2px 8px rgba(0,0,0,0.3);
+            }
+
+        .schermo-totale {
+            width: 100%;
+            background: transparent;
+            border: none;
+            text-align: right;
+            font-size: 9vh;
+            font-weight: bold;
+            color: #000033;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+            font-family: inherit;
+            outline: none;
+            cursor: text;
+            padding: 0;
+            margin: 0;
+        }
+
+            .schermo-totale::placeholder {
+                color: #8888bb;
+            }
+
+        /* BARRA AVVISI */
+        .barra-avvisi {
+            height: 5vh;
+            background-color: #002b5e;
+            border: 1px solid #4d88ff;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-weight: bold;
+            font-size: 2.2vh;
+            color: #ffffff;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), 2px 2px 5px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        #stat-sinistra {
+            display: flex;
+            gap: 25px;
+            color: #b3d9ff;
+            width: 20%;
+        }
+
+        #stat-centro {
+            color: #00ffcc;
+            letter-spacing: 1.5px;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        #stat-destra {
+            font-size: 3vh;
+            display: flex;
+            align-items: center;
+            min-width: 40px;
+            justify-content: flex-end;
+            width: 10%;
+        }
+
+        #stat-cliente {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            flex-grow: 1;
+            text-align: center;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .cliente-punti {
+            color: #ffcc00;
+        }
+
+        .cliente-bonus {
+            color: #ff6666;
+        }
+
+        .cliente-nome {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .avviso-errore {
+            background-color: #4d0000 !important;
+            color: #ff4d4d !important;
+            border-color: #ff4d4d !important;
+        }
+
+        /* BARRA STRUMENTI */
+        .barra-strumenti {
+            display: flex;
+            gap: 8px;
+            height: 4vh;
+        }
+
+        .input-fisico {
+            flex: 1;
+            background-color: #e0e0ff;
+            border: 1px solid #ffffff;
+            border-radius: 3px;
+            padding: 0 10px;
+            font-weight: bold;
+            color: #000033;
+            font-size: 1.8vh;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+            .input-fisico::placeholder {
+                color: #666;
+            }
+
+            .input-fisico:focus {
+                background-color: #00ff00;
+                color: #000000;
+            }
+
+        .input-barcode {
+            flex: 3;
+            background-color: #ffffff;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: text;
+        }
+
+            .input-barcode:focus {
+                background-color: #b3ffb3;
+                color: #000000;
+            }
+
+        .wrapper-dropdown {
+            flex: 1;
+            position: relative;
+            display: flex;
+        }
+
+        .wrapper-dropdown-largo {
+            flex: 3;
+            position: relative;
+            display: flex;
+        }
+
+            .wrapper-dropdown .input-fisico, .wrapper-dropdown-largo .input-fisico {
+                width: 100%;
+            }
+
+        .lista-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            border: 2px solid #005A9C;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+            z-index: 100;
+            flex-direction: column;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .wrapper-dropdown:hover .lista-dropdown {
+            display: flex;
+        }
+
+        .voce-lista {
+            padding: 10px;
+            font-size: 1.8vh;
+            font-weight: bold;
+            color: #001229;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+
+            .voce-lista:hover {
+                background-color: #d8d8ff;
+            }
+
+        .voce-evidenziata {
+            background-color: #005A9C !important;
+            color: #ffffff !important;
+        }
+
+        .voce-annulla {
+            background-color: #ffcccc;
+            color: #cc0000;
+            display: none;
+        }
+
+            .voce-annulla:hover {
+                background-color: #ff9999;
+            }
+
+        /* TABELLA PRODOTTI */
+        .pannello-tabella {
+            flex-grow: 1;
+            background-color: #e0e0ff;
+            border: 2px solid white;
+            border-radius: 4px;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .testata-tabella {
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
+            background: linear-gradient(to bottom, #f0f0ff, #d0d0ff);
+            border-bottom: 2px solid white;
+            padding: 8px 0;
+            font-weight: bold;
+            color: #444;
+            font-size: 1.8vh;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .area-dati-tabella {
+            background-color: #c7c7ff;
+            flex-grow: 1;
+            box-shadow: inset 3px 3px 8px rgba(0,0,0,0.2);
+            overflow-y: auto;
+        }
+
+        .riga-prodotto {
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            font-size: 2vh;
+            color: #000033;
+            align-items: center;
+            transition: all 0.1s;
+        }
+
+            .riga-prodotto:hover {
+                background-color: #ffe6e6;
+                color: #990000;
+                cursor: pointer;
+            }
+
+        .col-centro {
+            text-align: center;
+        }
+
+        .col-sinistra {
+            text-align: left;
+            padding-left: 10px;
+            font-weight: bold;
+        }
+
+        .col-valuta {
+            text-align: center;
+            font-weight: bold;
+            color: #002b5e;
+        }
+
+        /* MODALI UNIVERSALI */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 12, 24, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            background: linear-gradient(to bottom, #002b5e, #001a3a);
+            border: 2px solid #4d88ff;
+            border-radius: 8px;
+            padding: 30px;
+            width: 450px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(77, 136, 255, 0.4);
+            font-size: 2vh;
+            position: relative;
+        }
+
+        .modal-titolo {
+            font-size: 3vh;
+            font-weight: bold;
+            color: #00ffcc;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .modal-dati {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .modal-riga {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 2.2vh;
+        }
+
+            .modal-riga.evidenziata {
+                font-weight: bold;
+                color: #ffcc00;
+                font-size: 2.5vh;
+                border-top: 1px solid #4d88ff;
+                padding-top: 8px;
+                margin-top: 8px;
+            }
+
+            .modal-riga.bonus {
+                color: #ff6666;
+            }
+
+        .modal-bottoniera {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-modal {
+            padding: 12px 20px;
+            font-size: 2vh;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            transition: transform 0.1s;
+        }
+
+            .btn-modal:active {
+                transform: translate(2px, 2px);
+            }
+
+        .btn-verde {
+            background-color: #00cc66;
+            color: #003300;
+        }
+
+        .btn-rosso {
+            background-color: #ff4d4d;
+            color: #330000;
+        }
+
+        .btn-grigio {
+            background-color: #b3d9ff;
+            color: #001a3a;
+        }
+
+        .btn-blu {
+            background-color: #4d88ff;
+            color: #ffffff;
+        }
+
+        .btn-chiudi-modale {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+            .btn-chiudi-modale:hover {
+                color: #ff4d4d;
+            }
+
+        /* CALCOLATRICE E NUMPAD */
+        .numpad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .numpad-btn {
+            height: 8vh;
+            background: linear-gradient(to bottom, #1a3a5e, #001229);
+            border: 1px solid #4d88ff;
+            border-radius: 4px;
+            color: #00ffcc;
+            font-size: 4vh;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            transition: transform 0.1s;
+        }
+
+            .numpad-btn:active {
+                transform: translate(2px,2px);
+            }
+
+            .numpad-btn.cancella {
+                color: #ff4d4d;
+            }
+
+        .tasto-categoria {
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+        }
+
+            .tasto-categoria .icona {
+                font-size: 45px;
+                margin-bottom: 10px;
+            }
+
+            .tasto-categoria .testo {
+                font-size: 2vh;
+                font-weight: bold;
+            }
+
+        .log-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.1s;
+            border-radius: 4px;
+        }
+
+            .log-item:hover {
+                background-color: rgba(255, 77, 77, 0.2);
+                color: #ff4d4d;
+                text-decoration: line-through;
+            }
+
+        /* PULSANTI NOTIFICA SOCIAL */
+        .btn-social {
+            padding: 10px 15px;
+            font-size: 2vh;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            transition: all 0.2s;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .btn-social:active {
+                transform: translate(2px, 2px);
+            }
+
+        .btn-wa {
+            background-color: #25D366;
+        }
+
+            .btn-wa:hover {
+                background-color: #20bd5a;
+            }
+
+        .btn-tg {
+            background-color: #0088cc;
+        }
+
+            .btn-tg:hover {
+                background-color: #0077b3;
+            }
+
+        .btn-app {
+            background-color: #8a2be2;
+        }
+
+            .btn-app:hover {
+                background-color: #7926c9;
+            }
+
+            .btn-app.inviato {
+                background-color: #00cc66;
+                cursor: default;
+            }
+
+        /* 🌟 CRM, MAGAZZINO E REGISTRO (Layout Fluido e Proporzionale) */
+        .modal-grande {
+            width: 96vw;
+            height: 94vh;
+            max-width: none;
+            display: flex;
+            gap: 2vw;
+            flex-direction: row;
+            text-align: left;
+            padding: 3vh 2vw;
+            box-sizing: border-box;
+        }
+
+        .modal-full {
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: 100vw !important;
+            max-height: 100vh !important;
+            border-radius: 0 !important;
+            border: none !important;
+            background: #001229 !important;
+            margin: 0;
+            padding: 2vh 2vw; /* Margini proporzionali */
+            box-sizing: border-box;
+        }
+
+        /* Colonne Strutturali Bloccate */
+        .crm-left, .crm-right {
+            display: flex;
+            flex-direction: column;
+            background: rgba(0,0,0,0.3);
+            border: 0.2vh solid #4d88ff;
+            border-radius: 1vh;
+            padding: 2vh 1.5vw;
+            height: 100%;
+            overflow: hidden; /* Blocca le barre di scorrimento esterne! */
+            box-sizing: border-box;
+        }
+
+        .crm-left { flex: 1; }
+        .crm-right { flex: 1.5; }
+
+        /* Solo le liste interne scorrono */
+        .crm-list, .reg-list {
+            flex-grow: 1;
+            overflow-y: auto; /* La barra di scorrimento appare solo qui dentro */
+            display: flex;
+            flex-direction: column;
+            gap: 1vh;
+            padding-right: 0.5vw;
+            margin-top: 1vh;
+            border-top: 0.1vh solid rgba(255,255,255,0.1);
+            padding-top: 1vh;
+        }
+
+        .crm-search {
+            width: 100%;
+            padding: 1.5vh 1vw;
+            font-size: 2vh;
+            border-radius: 0.5vh;
+            border: 0.1vh solid #4d88ff;
+            background: #ffffff;
+            margin-bottom: 1.5vh;
+            outline: none;
+            box-sizing: border-box;
+            flex-shrink: 0; /* Impedisce che la barra di ricerca si rimpicciolisca */
+        }
+
+        /* Adattamento Elementi di Lista */
+        .crm-list-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5vh 1vw;
+            border-radius: 0.5vh;
+            cursor: pointer;
+            border-left: 0.5vw solid transparent;
+            transition: all 0.1s;
+        }
+
+        .crm-list-item:hover {
+            background: rgba(255,255,255,0.2);
+            border-left-color: #00ffcc;
+        }
+
+        .crm-list-item.attivo {
+            background: #005A9C;
+            border-left-color: #00ffcc;
+        }
+
+        /* Adattamento Form e Bottoni Interni */
+        .crm-form-group {
+            margin-bottom: 2vh;
+            flex-shrink: 0;
+        }
+
+        .crm-label {
+            display: block;
+            font-size: 1.8vh;
+            color: #b3d9ff;
+            font-weight: bold;
+            margin-bottom: 0.5vh;
+            text-transform: uppercase;
+        }
+
+        .crm-input {
+            width: 100%;
+            padding: 1.5vh 1vw;
+            font-size: 2.2vh;
+            border-radius: 0.5vh;
+            border: 0.1vh solid white;
+            background: #e0e0ff;
+            font-weight: bold;
+            color: #000033;
+            box-sizing: border-box;
+            transition: 0.2s;
+        }
+
+        .crm-stats {
+            display: flex;
+            gap: 2vw;
+            background: rgba(0,0,0,0.5);
+            padding: 2vh 1.5vw;
+            border-radius: 1vh;
+            border: 0.1vh solid #00ffcc;
+            margin-top: 1vh;
+            margin-bottom: 2vh;
+            flex-shrink: 0;
+        }
+
+        .crm-stat-box { flex: 1; text-align: center; }
+        .crm-stat-val { font-size: 4vh; font-weight: bold; color: #ffcc00; }
+        .crm-stat-lbl { font-size: 1.6vh; color: #ffffff; text-transform: uppercase; }
+
+        /* Bottoniera sempre fissa in basso */
+        .modal-bottoniera {
+            display: flex;
+            justify-content: center;
+            gap: 1.5vw;
+            margin-top: auto; /* Spinge la bottoniera in fondo al contenitore */
+            flex-shrink: 0;
+            padding-top: 2vh;
+        }
+
+        /* REGISTRO DI CASSA */
+        .reg-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #4d88ff;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+            .reg-card.totale {
+                background: rgba(0, 204, 102, 0.2);
+                border-color: #00cc66;
+            }
+
+        .reg-lbl {
+            font-size: 1.8vh;
+            color: #b3d9ff;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .reg-val {
+            font-size: 3.5vh;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+            .reg-val.verde {
+                color: #00ffcc;
+            }
+
+            .reg-val.rosso {
+                color: #ff4d4d;
+            }
+
+            .reg-val.big {
+                font-size: 5vh;
+                color: #ffcc00;
+            }
+
+        .reg-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-right: 5px;
+        }
+
+        .reg-item {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0,0,0,0.4);
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 1.8vh;
+        }
+
+            .reg-item.entrata {
+                border-left: 4px solid #00cc66;
+            }
+
+            .reg-item.uscita {
+                border-left: 4px solid #ff4d4d;
+            }
+
+            .reg-item.vendita {
+                border-left: 4px solid #4d88ff;
+            }
+
+        .reg-item-ora {
+            color: #8888bb;
+            width: 50px;
+        }
+
+        .reg-item-desc {
+            flex-grow: 1;
+            padding: 0 10px;
+        }
+
+        .reg-item-val {
+            font-weight: bold;
+        }
+
+        /* BOX INFO FIDELITY (Per i Punti Manuali) */
+        .box-info-fidelity {
+            background: rgba(0, 255, 204, 0.1);
+            border: 1px solid #00ffcc;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .info-label {
+            font-size: 1.6vh;
+            color: #b3d9ff;
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            font-size: 2.2vh;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+            .info-value span {
+                color: #ffcc00;
+            }
+
+        /* BARRA DI SISTEMA SUPERIORE */
+        .system-bar {
+            background-color: #000c18;
+            color: #ffffff;
+            height: 3vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            font-size: 1.5vh;
+            font-weight: bold;
+            border-bottom: 1px solid #4d88ff;
+            margin-top: -15px; /* Compensa il padding del body */
+            margin-left: -15px;
+            margin-right: -15px;
+            margin-bottom: 12px;
+        }
+
+        .sys-left, .sys-right {
+            width: 25%;
+        }
+
+        .sys-center {
+            flex-grow: 1;
+            text-align: center;
+            color: #b3d9ff;
+            letter-spacing: 2px;
+        }
+
+        .sys-right {
+            text-align: right;
+            color: #00ffcc;
+            font-size: 1.8vh;
+        }
+
+        .wifi-online {
+            color: #00cc66;
+        }
+
+        .wifi-offline {
+            color: #ff4d4d;
+            animation: lampeggia 1.5s infinite;
+        }
+
+        @keyframes lampeggia {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* 🏠 STILI MENU PRINCIPALE (Adattivo e Proporzionale) */
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+            height: 100vh; /* Occupa esattamente il 100% dell'altezza dello schermo */
+            padding: 4vh 2vw; /* Margini proporzionali allo schermo */
+            box-sizing: border-box;
+            overflow: hidden; /* Blocca definitivamente la comparsa di scrollbar */
+        }
+
+        .menu-header {
+            margin-bottom: 2vh;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra l'icona orizzontalmente */
+            text-align: center;  /* Centra il testo orizzontalmente */
+            width: 100%;
+        }
+
+        .menu-logo {
+            height: 8vh;
+            width: auto;
+            filter: drop-shadow(0 0 1vh #4d88ff);
+            margin-bottom: 1.5vh;
+        }
+
+        .menu-header h1 {
+            color: #ffffff;
+            font-size: 4.5vh;
+            letter-spacing: 0.2vw;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .menu-header p {
+            font-size: 1.8vh !important;
+            margin: 0.5vh 0 0 0 !important;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5vh 1.5vw;
+            width: 100%;
+            flex-grow: 1; /* Prende tutto lo spazio centrale disponibile */
+            align-content: center; /* Centra il blocco dei bottoni verticalmente */
+        }
+
+        .menu-tile {
+            background: rgba(255, 255, 255, 0.05);
+            border: 0.2vh solid rgba(77, 136, 255, 0.3);
+            border-radius: 1.5vh;
+            padding: 2vh 1vw;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .menu-tile:hover {
+                background: rgba(77, 136, 255, 0.2);
+                border-color: #00ffcc;
+                transform: translateY(-0.5vh);
+                box-shadow: 0 1vh 2.5vh rgba(0, 0, 0, 0.5);
+            }
+
+        .menu-icon {
+            font-size: 5.5vh; /* Le emoji useranno questa altezza */
+            margin-bottom: 1.5vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .menu-icon img {
+                height: 6vh; /* Le immagini PNG useranno questa altezza */
+                width: auto;
+                object-fit: contain;
+            }
+
+        .menu-label {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.6vh;
+            text-transform: uppercase;
+            letter-spacing: 0.1vw;
+            text-align: center;
+        }
+
+        .menu-footer {
+            margin-top: 2vh;
+            color: #4d88ff;
+            font-size: 1.5vh;
+            border-top: 0.1vh solid rgba(77, 136, 255, 0.2);
+            padding-top: 1.5vh;
+            width: 100%;
+            flex-shrink: 0; /* Impedisce allo schiacciamento di far sparire il footer */
+        }
+
+        /* Adattamento per tasto HOME nella cassa */
+        #btn-home-menu {
+            background: linear-gradient(to bottom, #ffcc00, #d97706);
+        }
+
+        /* 🌟 CLASSE PER MODALI A TUTTO SCHERMO */
+        .modal-full {
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: 100vw !important;
+            max-height: 100vh !important;
+            border-radius: 0 !important;
+            border: none !important;
+            background: #001229 !important; /* Uniforma lo sfondo al tema scuro */
+            margin: 0;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        /* Assicura che gli avvisi stiano sempre sopra a tutto (Z-Index Altissimo) */
+        .overlay-primo-piano {
+            z-index: 9999 !important;
+        }
+
+        /* 🌟 FIX: ALTEZZA CAMPI BARRA STRUMENTI E IMPAGINAZIONE CORRETTA */
+        .barra-strumenti {
+            height: 5vh !important; /* Aumentiamo l'altezza del contenitore (spinge la tabella in basso) */
+            min-height: 50px !important;
+            margin-bottom: -10px !important; /* Crea spazio per non toccare la tabella */
+        }
+
+        .input-fisico {
+            height: 80% !important; /* I campi si adattano all'altezza del genitore */
+            font-size: 2.2vh !important; /* Testo più grande e leggibile */
+            padding: 0 15px !important;
+            box-sizing: border-box;
+        }
+
+        .wrapper-dropdown, .wrapper-dropdown-largo {
+            height: 80% !important; /* Anche i contenitori a tendina si adattano */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Fa aprire i menu a tendina esattamente sotto il nuovo bordo, senza sovrapporsi */
+        .lista-dropdown {
+            top: 80% !important;
+
+        }
+
+/* Custom Scrollbar per Form Magazzino e Chat */
+#mag-form-scroll::-webkit-scrollbar, #mag-tabella-componenti::-webkit-scrollbar {
+    width: 6px;
+}
+
+#mag-form-scroll::-webkit-scrollbar-track, #mag-tabella-componenti::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+}
+
+#mag-form-scroll::-webkit-scrollbar-thumb, #mag-tabella-componenti::-webkit-scrollbar-thumb {
+    background: #4d88ff;
+    border-radius: 4px;
+}
+
+    #mag-form-scroll::-webkit-scrollbar-thumb:hover, #mag-tabella-componenti::-webkit-scrollbar-thumb:hover {
+        background: #00ffcc;
+    }
+
+/* Stili Componenti Kit */
+.kit-component-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-size: 1.6vh;
+}
+
+.btn-rimuovi-comp {
+    background: rgba(255, 77, 77, 0.2);
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d;
+    border-radius: 4px;
+    padding: 2px 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+    .btn-rimuovi-comp:hover {
+        background: #ff4d4d;
+        color: white;
+    }
+
+/* --- STILI ETICHETTE E STAMPA TERMICA --- */
+.etichetta-item-coda {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+/* Stili base condivisi tra anteprima e stampa reale */
+.label-template {
+    background: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+}
+
+.label-brand {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.label-desc {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.label-price-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.label-price {
+    font-weight: bold;
+}
+
+.label-price-old {
+    text-decoration: line-through;
+    font-size: 0.8em;
+    color: #555;
+}
+
+.label-code {
+    font-size: 0.6em;
+    color: #333;
+    margin-top: 2px;
+}
+
+/* Dimensioni per Anteprima a video (ingrandite per leggibilità) */
+.preview-standard, .preview-promo {
+    width: 250px;
+    height: 150px;
+    padding: 10px;
+}
+
+.preview-small {
+    width: 200px;
+    height: 100px;
+    padding: 5px;
+}
+
+.preview-standard .label-brand, .preview-promo .label-brand {
+    font-size: 16px;
+}
+
+.preview-standard .label-desc, .preview-promo .label-desc {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.preview-standard .label-price, .preview-promo .label-price {
+    font-size: 20px;
+}
+
+.preview-small .label-price {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Nascondi l'area di stampa normalmente */
+#print-area {
+    display: none;
+}
+
+@media print {
+    /* Nascondi l'intera PWA */
+    body > *:not(#print-area) {
+        display: none !important;
+    }
+
+    /* Mostra e formatta l'area di stampa */
+    #print-area {
+        display: block !important;
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    /* Configurazione rotolo termico */
+    @page {
+        margin: 0;
+    }
+
+    /* Dimensioni reali su carta */
+    .print-standard, .print-promo {
+        width: 50mm;
+        height: 30mm;
+        padding: 2mm;
+    }
+
+    .print-small {
+        width: 30mm;
+        height: 15mm;
+        padding: 1mm;
+    }
+
+    .print-standard .label-brand, .print-promo .label-brand {
+        font-size: 10pt;
+    }
+
+    .print-standard .label-desc, .print-promo .label-desc {
+        font-size: 8pt;
+        margin-bottom: 2mm;
+    }
+
+    .print-standard .label-price, .print-promo .label-price {
+        font-size: 12pt;
+    }
+
+    .print-small .label-price {
+        font-size: 9pt;
+        margin-bottom: 1mm;
+    }
+
+    .print-small .label-code {
+        font-size: 5pt;
+    }
+
+    /* NUOVA REGOLA: Configurazione Foglio A4 (Ordini PDF) */
+    .print-a4 {
+        width: 100%; /* Si adatta alla pagina A4 */
+        min-height: 297mm;
+        padding: 15mm; /* Margini perfetti per la lettura */
+        box-sizing: border-box;
+    }
+
+    /* NUOVA REGOLA: Configurazione Report Z (Stampanti Termiche 80mm) */
+    .print-ticket {
+        width: 72mm; /* Larghezza standard per rotoli da 80mm, lasciando margine */
+        min-height: auto;
+        padding: 0;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+}
