@@ -1,0 +1,1821 @@
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 15px;
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #001229, #005A9C);
+            height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        /* GRIGLIA TASTI */
+        .sezione-tasti {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .tasto-fisico {
+            height: 115px;
+            background: linear-gradient(to bottom, #002b5e, #001a3a);
+            border: 1px solid #4d88ff;
+            border-radius: 4px;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), inset 1px 1px 2px rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+        }
+
+            .tasto-fisico:active {
+                transform: translate(2px, 2px);
+                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6), inset 2px 2px 6px rgba(0, 0, 0, 0.5);
+            }
+
+        .icona-img {
+            max-width: 65%;
+            max-height: 65%;
+            object-fit: contain;
+            filter: drop-shadow(2px 3px 3px rgba(0,0,0,0.4));
+            transition: transform 0.2s;
+        }
+
+        .tasto-fisico:hover .icona-img {
+            transform: scale(1.1);
+        }
+
+        /* SCHERMO TOTALE */
+        .schermo-totale-container {
+            grid-column: span 4;
+            height: 110px;
+            background: rgba(0, 5, 13, 0.95); /* ✨ Sfondo scurissimo (quasi nero) per dare profondità */
+            border: 2px solid #bf953f; /* ✨ Bordo oro spesso e lussuoso */
+            border-radius: 8px;
+            /* ✨ Effetto ombra interna per farlo sembrare un vero schermo incassato */
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(0, 0, 0, 0.4); 
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 25px;
+            transition: background-color 0.2s;
+        }
+
+        .schermo-totale {
+            width: 100%;
+            background: transparent;
+            border: none;
+            text-align: right;
+            font-size: 60px;
+            font-weight: bold;
+            color: #fcf6ba; /* ✨ Testo in oro chiaro e brillante */
+            /* text-shadow: 0 0 15px rgba(252, 246, 186, 0.6); /* ✨ Effetto bagliore (glow) sui numeri */
+            font-family: inherit;
+            outline: none;
+            cursor: text;
+            padding: 0;
+            margin: 0;
+        }
+
+            .schermo-totale::placeholder {
+                color: #8888bb;
+            }
+
+        /* BARRA AVVISI */
+        .barra-avvisi {
+            height: 40px;
+            background-color: #002b5e;
+            border: 1px solid #4d88ff;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #ffffff;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), 2px 2px 5px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        #stat-sinistra {
+            display: flex;
+            gap: 25px;
+            color: #b3d9ff;
+            width: 20%;
+        }
+
+        #stat-centro {
+            color: #00ffcc;
+            letter-spacing: 1.5px;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        #stat-destra {
+            font-size: 3vh;
+            display: flex;
+            align-items: center;
+            min-width: 40px;
+            justify-content: flex-end;
+            width: 10%;
+        }
+
+        #stat-cliente {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            flex-grow: 1;
+            text-align: center;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .cliente-punti {
+            color: #ffcc00;
+        }
+
+        .cliente-bonus {
+            color: #ff6666;
+        }
+
+        .cliente-nome {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .avviso-errore {
+            background-color: #4d0000 !important;
+            color: #ff4d4d !important;
+            border-color: #ff4d4d !important;
+        }
+
+        /* BARRA STRUMENTI */
+        .barra-strumenti {
+            display: flex;
+            gap: 8px;
+            height: 4vh;
+        }
+
+        .input-fisico {
+            flex: 1;
+            background-color: #e0e0ff;
+            border: 1px solid #ffffff;
+            border-radius: 3px;
+            padding: 0 10px;
+            font-weight: bold;
+            color: #000033;
+            font-size: 1.8vh;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+            .input-fisico::placeholder {
+                color: #666;
+            }
+
+            .input-fisico:focus {
+                background-color: #00ff00;
+                color: #000000;
+            }
+
+        .input-barcode {
+            flex: 3;
+            background-color: #ffffff;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: text;
+        }
+
+            .input-barcode:focus {
+                background-color: #b3ffb3;
+                color: #000000;
+            }
+
+        .wrapper-dropdown {
+            flex: 1;
+            position: relative;
+            display: flex;
+        }
+
+        .wrapper-dropdown-largo {
+            flex: 3;
+            position: relative;
+            display: flex;
+        }
+
+            .wrapper-dropdown .input-fisico, .wrapper-dropdown-largo .input-fisico {
+                width: 100%;
+            }
+
+        .lista-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            border: 2px solid #005A9C;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+            z-index: 100;
+            flex-direction: column;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .wrapper-dropdown:hover .lista-dropdown {
+            display: flex;
+        }
+
+        .voce-lista {
+            padding: 10px;
+            font-size: 1.8vh;
+            font-weight: bold;
+            color: #001229;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+
+            .voce-lista:hover {
+                background-color: #d8d8ff;
+            }
+
+        .voce-evidenziata {
+            background-color: #005A9C !important;
+            color: #ffffff !important;
+        }
+
+        .voce-annulla {
+            background-color: #ffcccc;
+            color: #cc0000;
+            display: none;
+        }
+
+            .voce-annulla:hover {
+                background-color: #ff9999;
+            }
+
+        /* TABELLA PRODOTTI */
+        .pannello-tabella {
+            flex-grow: 1;
+            background-color: rgba(0, 10, 25, 0.6); /* Sfondo scuro in tinta con la cassa */
+            border: 1px solid #bf953f; /* ✨ Bordo in puro stile Luxury oro */
+            border-radius: 8px; /* Angoli elegantemente smussati */
+            box-shadow: 0 0 15px rgba(191, 149, 63, 0.15); /* Leggero alone dorato esterno */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .testata-tabella {
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
+            background: rgba(0, 10, 25, 0.95); /* Sfondo scuro in puro stile Luxury */
+            border-bottom: 2px solid #bf953f; /* Bordo inferiore oro */
+            padding: 8px 0;
+            font-weight: bold;
+            color: #fcf6ba; /* Testo oro luminoso */
+            font-size: 12px; /* ✨ FISSATO IN PIXEL per non sformarsi mai */
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* L'area interna scorrevole diventa trasparente */
+        .area-dati-tabella {
+            background-color: transparent; 
+            flex-grow: 1;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            overflow-y: auto;
+        }
+
+        /* Stile delle singole righe dei prodotti */
+        .riga-prodotto {
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(191, 149, 63, 0.2); /* Sottile separatore oro tra i prodotti */
+            font-size: 16px; /* Fissato in pixel per evitare sfasamenti */
+            color: #ffffff; /* Testo bianco ben leggibile sul fondo scuro */
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+            /* Effetto hover dorato quando si passa il mouse su un prodotto */
+            .riga-prodotto:hover {
+                background-color: rgba(191, 149, 63, 0.15); 
+                color: #fcf6ba; 
+                cursor: pointer;
+            }
+
+        .col-centro {
+            text-align: center;
+        }
+
+        .col-sinistra {
+            text-align: left;
+            padding-left: 10px;
+            font-weight: bold;
+        }
+
+        .col-valuta {
+            text-align: center;
+            font-weight: bold;
+            color: #002b5e;
+        }
+
+        /* MODALI UNIVERSALI */
+/* Sfondo oscurante dietro il modale */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 5, 13, 0.9); /* ✨ Sfondo scurissimo per dare risalto al centro */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Il riquadro centrale del modale */
+.modal-box {
+    background: #000c18;
+    border: 2px solid #bf953f;
+    border-radius: 12px;
+    padding: 30px;
+    width: 90%;
+    max-width: 900px; /* ✨ Abbiamo allargato il limite massimo! */
+    box-shadow: 0 0 30px rgba(191, 149, 63, 0.2), inset 0 0 20px rgba(0,0,0,0.8);
+    position: relative;
+    animation: fadeIn 0.2s ease-out;
+}
+
+        .modal-titolo {
+            font-size: 3vh;
+            font-weight: bold;
+            color: #00ffcc;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .modal-dati {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .modal-riga {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 2.2vh;
+        }
+
+            .modal-riga.evidenziata {
+                font-weight: bold;
+                color: #ffcc00;
+                font-size: 2.5vh;
+                border-top: 1px solid #4d88ff;
+                padding-top: 8px;
+                margin-top: 8px;
+            }
+
+            .modal-riga.bonus {
+                color: #ff6666;
+            }
+
+        .modal-bottoniera {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+/* -------------------------------------
+           BOTTONI DEI MODALI (Fissati in px)
+        -------------------------------------- */
+.btn-modal {
+    padding: 12px 25px;
+    font-size: 16px; /* ✨ Fissato in pixel */
+    font-weight: bold;
+    border: 1px solid #bf953f;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+            .btn-modal:active {
+                transform: translate(2px, 2px);
+            }
+
+
+
+/* Tasto azione critica (Elimina/Annulla) */
+.btn-rosso {
+    background: rgba(255, 77, 77, 0.05);
+    color: #ff4d4d;
+    border-color: #ff4d4d;
+}
+
+    .btn-rosso:hover {
+        background: rgba(255, 77, 77, 0.15);
+        box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+    }
+
+/* Tasto azione secondaria (ex Grigio) */
+.btn-grigio {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fcf6ba;
+    border-color: rgba(191, 149, 63, 0.5);
+}
+
+    .btn-grigio:hover {
+        background: rgba(191, 149, 63, 0.2);
+    }
+
+/* Tasto azione principale (ex Blu o Verde) */
+.btn-blu, .btn-verde {
+    background: rgba(191, 149, 63, 0.15);
+    color: #fcf6ba;
+    border-color: #bf953f;
+    box-shadow: 0 0 10px rgba(191, 149, 63, 0.3);
+}
+
+    .btn-blu:hover, .btn-verde:hover {
+        background: rgba(191, 149, 63, 0.3);
+        box-shadow: 0 0 15px rgba(191, 149, 63, 0.5);
+    }
+
+        .btn-chiudi-modale {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+            .btn-chiudi-modale:hover {
+                color: #ff4d4d;
+            }
+
+/* CALCOLATRICE E NUMPAD */
+.numpad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.numpad-btn {
+    height: 65px; /* ✨ Fissato in px invece di 8vh */
+    background: rgba(0, 10, 25, 0.8); /* ✨ Sfondo dark luxury */
+    border: 1px solid #bf953f; /* ✨ Bordo oro */
+    border-radius: 8px;
+    color: #fcf6ba; /* ✨ Testo oro */
+    font-size: 28px; /* ✨ Fissato in px invece di 4vh */
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.2s;
+}
+
+    .numpad-btn:hover {
+        background: rgba(191, 149, 63, 0.2);
+        box-shadow: 0 0 15px rgba(191, 149, 63, 0.4);
+    }
+
+    .numpad-btn:active {
+        transform: scale(0.95);
+    }
+
+    .numpad-btn.cancella {
+        color: #ff4d4d;
+        border-color: #ff4d4d;
+    }
+
+        .numpad-btn.cancella:hover {
+            background: rgba(255, 77, 77, 0.15);
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+        }
+
+        .tasto-categoria {
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+        }
+
+            .tasto-categoria .icona {
+                font-size: 45px;
+                margin-bottom: 10px;
+            }
+
+            .tasto-categoria .testo {
+                font-size: 2vh;
+                font-weight: bold;
+            }
+
+        .log-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.1s;
+            border-radius: 4px;
+        }
+
+            .log-item:hover {
+                background-color: rgba(255, 77, 77, 0.2);
+                color: #ff4d4d;
+                text-decoration: line-through;
+            }
+
+        /* PULSANTI NOTIFICA SOCIAL */
+        .btn-social {
+            padding: 10px 15px;
+            font-size: 2vh;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            transition: all 0.2s;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .btn-social:active {
+                transform: translate(2px, 2px);
+            }
+
+        .btn-wa {
+            background-color: #25D366;
+        }
+
+            .btn-wa:hover {
+                background-color: #20bd5a;
+            }
+
+        .btn-tg {
+            background-color: #0088cc;
+        }
+
+            .btn-tg:hover {
+                background-color: #0077b3;
+            }
+
+        .btn-app {
+            background-color: #8a2be2;
+        }
+
+            .btn-app:hover {
+                background-color: #7926c9;
+            }
+
+            .btn-app.inviato {
+                background-color: #00cc66;
+                cursor: default;
+            }
+
+        /* 🗃️ CRM, MAGAZZINO E REGISTRO (Layout Fluido e Proporzionale) */
+        .modal-grande {
+            width: 96vw;
+            height: 94vh;
+            max-width: none;
+            display: flex;
+            gap: 2vw;
+            flex-direction: row;
+            text-align: left;
+            padding: 3vh 2vw;
+            box-sizing: border-box;
+        }
+
+        .modal-full {
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: 100vw !important;
+            max-height: 100vh !important;
+            border-radius: 0 !important;
+            border: none !important;
+            background: #001229 !important;
+            margin: 0;
+            padding: 2vh 2vw; /* Margini proporzionali */
+            box-sizing: border-box;
+        }
+
+        /* Colonne Strutturali Bloccate */
+        .crm-left, .crm-right {
+            display: flex;
+            flex-direction: column;
+            background: rgba(0,0,0,0.3);
+            border: 0.2vh solid #4d88ff;
+            border-radius: 1vh;
+            padding: 2vh 1.5vw;
+            height: 100%;
+            overflow: hidden; /* Blocca le barre di scorrimento esterne! */
+            box-sizing: border-box;
+        }
+
+        .crm-left { flex: 1; }
+        .crm-right { flex: 1.5; }
+
+        /* Solo le liste interne scorrono */
+        .crm-list, .reg-list {
+            flex-grow: 1;
+            overflow-y: auto; /* La barra di scorrimento appare solo qui dentro */
+            display: flex;
+            flex-direction: column;
+            gap: 1vh;
+            padding-right: 0.5vw;
+            margin-top: 1vh;
+            border-top: 0.1vh solid rgba(255,255,255,0.1);
+            padding-top: 1vh;
+        }
+
+        .crm-search {
+            width: 100%;
+            padding: 1.5vh 1vw;
+            font-size: 2vh;
+            border-radius: 0.5vh;
+            border: 0.1vh solid #4d88ff;
+            background: #ffffff;
+            margin-bottom: 1.5vh;
+            outline: none;
+            box-sizing: border-box;
+            flex-shrink: 0; /* Impedisce che la barra di ricerca si rimpicciolisca */
+        }
+
+        /* Adattamento Elementi di Lista */
+        .crm-list-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5vh 1vw;
+            border-radius: 0.5vh;
+            cursor: pointer;
+            border-left: 0.5vw solid transparent;
+            transition: all 0.1s;
+        }
+
+        .crm-list-item:hover {
+            background: rgba(255,255,255,0.2);
+            border-left-color: #00ffcc;
+        }
+
+        .crm-list-item.attivo {
+            background: #005A9C;
+            border-left-color: #00ffcc;
+        }
+
+        /* Adattamento Form e Bottoni Interni */
+        .crm-form-group {
+            margin-bottom: 2vh;
+            flex-shrink: 0;
+        }
+
+        .crm-label {
+            display: block;
+            font-size: 1.8vh;
+            color: #b3d9ff;
+            font-weight: bold;
+            margin-bottom: 0.5vh;
+            text-transform: uppercase;
+        }
+
+        .crm-input {
+            width: 100%;
+            padding: 1.5vh 1vw;
+            font-size: 2.2vh;
+            border-radius: 0.5vh;
+            border: 0.1vh solid white;
+            background: #e0e0ff;
+            font-weight: bold;
+            color: #000033;
+            box-sizing: border-box;
+            transition: 0.2s;
+        }
+
+        .crm-stats {
+            display: flex;
+            gap: 2vw;
+            background: rgba(0,0,0,0.5);
+            padding: 2vh 1.5vw;
+            border-radius: 1vh;
+            border: 0.1vh solid #00ffcc;
+            margin-top: 1vh;
+            margin-bottom: 2vh;
+            flex-shrink: 0;
+        }
+
+        .crm-stat-box { flex: 1; text-align: center; }
+        .crm-stat-val { font-size: 4vh; font-weight: bold; color: #ffcc00; }
+        .crm-stat-lbl { font-size: 1.6vh; color: #ffffff; text-transform: uppercase; }
+
+        /* Bottoniera sempre fissa in basso */
+        .modal-bottoniera {
+            display: flex;
+            justify-content: center;
+            gap: 1.5vw;
+            margin-top: auto; /* Spinge la bottoniera in fondo al contenitore */
+            flex-shrink: 0;
+            padding-top: 2vh;
+        }
+
+        /* REGISTRO DI CASSA */
+        .reg-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #4d88ff;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+            .reg-card.totale {
+                background: rgba(0, 204, 102, 0.2);
+                border-color: #00cc66;
+            }
+
+        .reg-lbl {
+            font-size: 1.8vh;
+            color: #b3d9ff;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .reg-val {
+            font-size: 3.5vh;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+            .reg-val.verde {
+                color: #00ffcc;
+            }
+
+            .reg-val.rosso {
+                color: #ff4d4d;
+            }
+
+            .reg-val.big {
+                font-size: 5vh;
+                color: #ffcc00;
+            }
+
+        .reg-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-right: 5px;
+        }
+
+        .reg-item {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0,0,0,0.4);
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 1.8vh;
+        }
+
+            .reg-item.entrata {
+                border-left: 4px solid #00cc66;
+            }
+
+            .reg-item.uscita {
+                border-left: 4px solid #ff4d4d;
+            }
+
+            .reg-item.vendita {
+                border-left: 4px solid #4d88ff;
+            }
+
+        .reg-item-ora {
+            color: #8888bb;
+            width: 50px;
+        }
+
+        .reg-item-desc {
+            flex-grow: 1;
+            padding: 0 10px;
+        }
+
+        .reg-item-val {
+            font-weight: bold;
+        }
+
+        /* BOX INFO FIDELITY (Per i Punti Manuali) */
+        .box-info-fidelity {
+            background: rgba(0, 255, 204, 0.1);
+            border: 1px solid #00ffcc;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .info-label {
+            font-size: 1.6vh;
+            color: #b3d9ff;
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            font-size: 2.2vh;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+            .info-value span {
+                color: #ffcc00;
+            }
+
+/* BARRA DI SISTEMA SUPERIORE */
+.system-bar {
+    background-color: #000c18;
+    color: #ffffff;
+    height: 35px; /* ✨ Altezza bloccata in pixel */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 14px; /* ✨ Testo base bloccato */
+    font-weight: bold;
+    border-bottom: 1px solid #4d88ff;
+    margin-top: -15px;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 12px;
+}
+
+        .sys-left, .sys-right {
+            width: 25%;
+        }
+
+        .sys-center {
+            flex-grow: 1;
+            text-align: center;
+            color: #b3d9ff;
+            letter-spacing: 2px;
+        }
+
+.sys-right {
+    text-align: right;
+    color: #00ffcc;
+    font-size: 16px; /* ✨ Orologio bloccato in pixel */
+}
+
+        .wifi-online {
+            color: #00cc66;
+        }
+
+        .wifi-offline {
+            color: #ff4d4d;
+            animation: lampeggia 1.5s infinite;
+        }
+
+        @keyframes lampeggia {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* 📱 STILI MENU PRINCIPALE (Adattivo e Proporzionale) */
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+            height: 100vh; /* Occupa esattamente il 100% dell'altezza dello schermo */
+            padding: 4vh 2vw; /* Margini proporzionali allo schermo */
+            box-sizing: border-box;
+            overflow: hidden; /* Blocca definitivamente la comparsa di scrollbar */
+        }
+
+        .menu-header {
+            margin-bottom: 2vh;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra l'icona orizzontalmente */
+            text-align: center;  /* Centra il testo orizzontalmente */
+            width: 100%;
+        }
+
+        .menu-logo {
+            height: 8vh;
+            width: auto;
+            filter: drop-shadow(0 0 1vh #4d88ff);
+            margin-bottom: 1.5vh;
+        }
+
+        .menu-header h1 {
+            color: #ffffff;
+            font-size: 4.5vh;
+            letter-spacing: 0.2vw;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .menu-header p {
+            font-size: 1.8vh !important;
+            margin: 0.5vh 0 0 0 !important;
+        }
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px; /* ✨ Spazio tra i bottoni fissato in pixel invece di 2.5vh 1.5vw */
+    width: 100%;
+    flex-grow: 1;
+    align-content: center;
+}
+
+.menu-tile {
+    background: rgba(0, 10, 25, 0.8); /* ✨ Sfondo scuro luxury */
+    border: 2px solid #bf953f; /* ✨ Bordo oro fissato in px */
+    border-radius: 12px; /* ✨ Fissato in px */
+    padding: 20px 15px; /* ✨ Fissato in px invece di 2vh 1vw */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.3);
+}
+
+    .menu-tile:hover {
+        background: rgba(191, 149, 63, 0.15); /* ✨ Alone dorato */
+        border-color: #fcf6ba;
+        transform: translateY(-5px); /* ✨ Fissato in px */
+        box-shadow: 0 10px 20px rgba(191, 149, 63, 0.3);
+    }
+
+.menu-icon {
+    font-size: 50px; /* ✨ Emoji fissate in px invece di 5.5vh */
+    margin-bottom: 15px; /* ✨ Fissato in px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .menu-icon img {
+        height: 55px; /* ✨ Immagini fissate in px invece di 6vh */
+        width: auto;
+        object-fit: contain;
+    }
+
+.menu-label {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px; /* ✨ Testo fissato in px invece di 1.6vh */
+    text-transform: uppercase;
+    letter-spacing: 2px; /* ✨ Fissato in px invece di 0.1vw */
+    text-align: center;
+}
+
+.menu-footer {
+    margin-top: 2vh;
+    color: #bf953f; /* ✨ Testo in oro scuro */
+    font-size: 14px; /* ✨ Fissato in pixel */
+    border-top: 1px solid rgba(191, 149, 63, 0.4); /* ✨ Linea separatrice dorata */
+    padding-top: 1.5vh;
+    width: 100%;
+    flex-shrink: 0;
+    text-align: center;
+}
+        /* Adattamento per tasto HOME nella cassa */
+        #btn-home-menu {
+            background: linear-gradient(to bottom, #ffcc00, #d97706);
+        }
+
+        /* 🖥️ CLASSE PER MODALI A TUTTO SCHERMO */
+        /* Assicura che gli avvisi stiano sempre sopra a tutto (Z-Index Altissimo) */
+        .overlay-primo-piano {
+            z-index: 9999 !important;
+        }
+
+        /* 🛠 FIX: ALTEZZA CAMPI BARRA STRUMENTI E IMPAGINAZIONE CORRETTA */
+        .barra-strumenti {
+            height: 45px !important; /* Sostituito 5vh con i Pixel fissi */
+            min-height: 45px !important;
+            margin-bottom: -10px !important; 
+        }
+
+        .input-fisico {
+            height: 45px !important; /* Sostituito l'80% con un'altezza fissa */
+            font-size: 13px !important; /* Sostituito 2.2vh per bloccare l'ingrandimento del testo */
+            padding: 0 15px !important;
+            box-sizing: border-box;
+        }
+
+        .wrapper-dropdown, .wrapper-dropdown-largo {
+            height: 80% !important; /* Anche i contenitori a tendina si adattano */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Fa aprire i menu a tendina esattamente sotto il nuovo bordo, senza sovrapporsi */
+        .lista-dropdown {
+            top: 80% !important;
+
+        }
+
+/* Custom Scrollbar per Form Magazzino e Chat */
+#mag-form-scroll::-webkit-scrollbar, #mag-tabella-componenti::-webkit-scrollbar {
+    width: 6px;
+}
+
+#mag-form-scroll::-webkit-scrollbar-track, #mag-tabella-componenti::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+}
+
+#mag-form-scroll::-webkit-scrollbar-thumb, #mag-tabella-componenti::-webkit-scrollbar-thumb {
+    background: #4d88ff;
+    border-radius: 4px;
+}
+
+    #mag-form-scroll::-webkit-scrollbar-thumb:hover, #mag-tabella-componenti::-webkit-scrollbar-thumb:hover {
+        background: #00ffcc;
+    }
+
+/* Stili Componenti Kit */
+.kit-component-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-size: 1.6vh;
+}
+
+.btn-rimuovi-comp {
+    background: rgba(255, 77, 77, 0.2);
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d;
+    border-radius: 4px;
+    padding: 2px 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+    .btn-rimuovi-comp:hover {
+        background: #ff4d4d;
+        color: white;
+    }
+
+/* --- STILI ETICHETTE E STAMPA TERMICA --- */
+.etichetta-item-coda {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+/* Stili base condivisi tra anteprima e stampa reale */
+.label-template {
+    background: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    page-break-after: always;
+}
+
+.label-brand {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.label-desc {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.label-price-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.label-price {
+    font-weight: bold;
+}
+
+.label-price-old {
+    text-decoration: line-through;
+    font-size: 0.8em;
+    color: #555;
+}
+
+.label-code {
+    font-size: 0.6em;
+    color: #333;
+    margin-top: 2px;
+}
+
+/* Dimensioni per Anteprima a video (ingrandite per leggibilità) */
+.preview-standard, .preview-promo {
+    width: 250px;
+    height: 150px;
+    padding: 10px;
+}
+
+.preview-small {
+    width: 200px;
+    height: 100px;
+    padding: 5px;
+}
+
+.preview-standard .label-brand, .preview-promo .label-brand {
+    font-size: 16px;
+}
+
+.preview-standard .label-desc, .preview-promo .label-desc {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.preview-standard .label-price, .preview-promo .label-price {
+    font-size: 20px;
+}
+
+.preview-small .label-price {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Nascondi l'area di stampa normalmente */
+#print-area {
+    display: none;
+}
+
+@media print {
+    /* Nascondi l'intera PWA */
+    body > *:not(#print-area) {
+        display: none !important;
+    }
+
+    /* Mostra e formatta l'area di stampa */
+    #print-area {
+        display: block !important;
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    /* Configurazione rotolo termico */
+    @page {
+        margin: 0;
+    }
+
+    /* Dimensioni reali su carta */
+    .print-standard, .print-promo {
+        width: 50mm;
+        height: 30mm;
+        padding: 2mm;
+    }
+
+    .print-small {
+        width: 30mm;
+        height: 15mm;
+        padding: 1mm;
+    }
+
+    .print-standard .label-brand, .print-promo .label-brand {
+        font-size: 10pt;
+    }
+
+    .print-standard .label-desc, .print-promo .label-desc {
+        font-size: 8pt;
+        margin-bottom: 2mm;
+    }
+
+    .print-standard .label-price, .print-promo .label-price {
+        font-size: 12pt;
+    }
+
+    .print-small .label-price {
+        font-size: 9pt;
+        margin-bottom: 1mm;
+    }
+
+    .print-small .label-code {
+        font-size: 5pt;
+    }
+
+    /* NUOVA REGOLA: Configurazione Foglio A4 (Ordini PDF) */
+    .print-a4 {
+        width: 100%; /* Si adatta alla pagina A4 */
+        min-height: 297mm;
+        padding: 15mm; /* Margini perfetti per la lettura */
+        box-sizing: border-box;
+    }
+
+    /* NUOVA REGOLA: Configurazione Report Z (Stampanti Termiche 80mm) */
+    .print-ticket {
+        width: 72mm; /* Larghezza standard per rotoli da 80mm, lasciando margine */
+        min-height: auto;
+        padding: 0;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    /* Impedisce lo scroll della pagina sotto il modale e resetta margini */
+    body.modal-open {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+}
+    
+/* ✨ Sfondo Blu Abisso Luxury per tutta l'app (Cassa + Modali) */
+body, .modal-overlay, .overlay-primo-piano, .modal-full {
+    background: radial-gradient(circle at 50% 50%, #001a3d 0%, #00050d 100%) !important;
+    color: #ffffff !important;
+}
+
+.menu-header-luxury {
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 20px;
+}
+
+.menu-logo-luxury {
+    width: 45px; /* Grandezza della boccetta */
+    height: 45px;
+    object-fit: contain;
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.6)); /* Ombra fluttuante */
+    margin-bottom: 20px;
+    transition: transform 0.5s ease;
+}
+
+    .menu-logo-luxury:hover {
+        transform: scale(1.05); /* Effetto zoom quando ci passi sopra col mouse */
+    }
+
+#menu-titolo-app {
+    font-family: 'Cinzel', serif; /* Font elegante */
+    font-size: 56px; /* Grandezza del testo */
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 12px; /* Spazio tra le lettere molto ampio ed elegante */
+    /* Effetto Oro Metallizzato */
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    /* stylelint-disable-next-line */
+    -webkit-background-clip: text;
+    /* stylelint-disable-next-line */
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 5px 25px rgba(255, 215, 0, 0.2); /* Bagliore dorato */
+    text-transform: uppercase;
+}
+
+.menu-sottotitolo-luxury {
+    color: #d9b3ff;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+/* ✨ Bordo e bagliore dorato per i pulsanti */
+.menu-grid .menu-tile {
+    border-color: #bf953f; /* Colore oro base preso dalla scritta */
+    box-shadow: 0 0 8px rgba(191, 149, 63, 0.2);
+    transition: all 0.3s ease;
+}
+
+    /* Effetto luminosità quando si passa il mouse */
+    .menu-grid .menu-tile:hover {
+        border-color: #fcf6ba; /* Oro più chiaro e luminoso */
+        box-shadow: 0 0 18px rgba(252, 246, 186, 0.6);
+        transform: translateY(-3px); /* Leggero sollevamento 3D */
+    }
+
+    /* Facciamo intonare anche il testo interno all'oro */
+    .menu-grid .menu-tile .menu-label {
+        color: #fbf5b7;
+        letter-spacing: 1px;
+    }
+
+/* ✨ Linea dorata e stile per il footer della versione */
+.menu-footer {
+    border-top: 1px solid #bf953f !important; /* Colore oro base */
+    box-shadow: 0 -5px 15px rgba(191, 149, 63, 0.15) !important; /* Leggero bagliore verso l'alto */
+    color: #fbf5b7 !important; /* Tinta dorata tenue anche per il testo */
+}
+
+/* ✨ Stile Luxury per i tasti della Cassa (Tastierino e Funzioni) */
+.tasto-fisico {
+    border: 1px solid #bf953f !important; /* Bordo oro di base */
+    box-shadow: 0 0 8px rgba(191, 149, 63, 0.2), inset 1px 1px 2px rgba(255, 255, 255, 0.1) !important;
+    color: #fbf5b7 !important; /* Colore dorato tenue per il testo generale */
+    transition: all 0.3s ease !important;
+}
+
+    /* Effetto luminosità quando si passa il mouse o si tocca il tasto in cassa */
+    .tasto-fisico:hover {
+        border-color: #fcf6ba !important; /* Oro luminoso */
+        box-shadow: 0 0 18px rgba(252, 246, 186, 0.6), inset 1px 1px 2px rgba(255, 255, 255, 0.2) !important;
+        transform: translateY(-2px) !important; /* Leggero effetto pressione 3D */
+    }
+
+    /* Assicura che i testi grandi (es. i numeri del tastierino) diventino oro brillante */
+    .tasto-fisico b, .tasto-fisico span {
+        color: #fcf6ba !important;
+    }
+
+/* ✨ Stile "Menu Principale" applicato ai tasti Cassa e Barra Avvisi */
+.tasto-fisico, .barra-avvisi {
+    background: rgba(255, 255, 255, 0.05) !important; /* Sfondo vetro */
+    border: 1px solid #bf953f !important; /* Bordo assottigliato per un look più minimal */
+    border-radius: 1.5vh !important; /* Stondatura morbida */
+    box-shadow: 0 0 8px rgba(191, 149, 63, 0.2) !important;
+    transition: all 0.3s ease !important;
+}
+
+    /* Effetto hover */
+    .tasto-fisico:hover {
+        background: rgba(191, 149, 63, 0.1) !important;
+        border-color: #fcf6ba !important;
+        box-shadow: 0 0 18px rgba(252, 246, 186, 0.6) !important;
+        transform: translateY(-3px) !important;
+    }
+
+    /* Colore testo e icone per i tasti */
+    .tasto-fisico b, .tasto-fisico span {
+        color: #fcf6ba !important;
+    }
+
+/* Scritta centrale della barra avvisi */
+#stat-centro {
+    color: #fcf6ba !important;
+    text-shadow: 0 0 8px rgba(252, 246, 186, 0.4) !important;
+}
+
+/* ==========================================
+   TASTIERINO PIN - MODALE SBLOCCO CASSA
+========================================== */
+.pin-btn-luxury {
+    background: rgba(0, 10, 25, 0.8);
+    border: 1px solid #bf953f;
+    color: #fcf6ba;
+    font-size: 24px;
+    padding: 15px 0;
+    border-radius: 8px;
+    transition: all 0.2s;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+    .pin-btn-luxury:hover {
+        background: rgba(191, 149, 63, 0.2);
+        box-shadow: 0 0 15px rgba(191, 149, 63, 0.4);
+    }
+
+    .pin-btn-luxury:active {
+        transform: scale(0.95);
+    }
+
+.pin-btn-rosso {
+    border-color: #ff4d4d !important;
+    color: #ff4d4d !important;
+}
+
+    .pin-btn-rosso:hover {
+        background: rgba(255, 77, 77, 0.1) !important;
+        box-shadow: 0 0 15px rgba(255, 77, 77, 0.4) !important;
+    }
+
+/* ==========================================
+   CARICA PUNTI MANUALE
+========================================== */
+.luxury-input {
+    background: rgba(0, 5, 13, 0.8) !important;
+    border: 1px solid #bf953f !important;
+    color: #fcf6ba !important;
+    border-radius: 6px;
+    padding: 12px 15px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+
+    .luxury-input::placeholder {
+        color: rgba(252, 246, 186, 0.4);
+    }
+
+/* ==========================================
+   MAGAZINO
+========================================== */
+.luxury-label {
+    display: block;
+    font-size: 14px;
+    color: #bf953f;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#modal-magazzino .modal-box {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    background: #00050d !important;
+    box-sizing: border-box;
+}
+
+.luxury-crm-input {
+    background: rgba(0, 5, 13, 0.8) !important;
+    border: 1px solid #bf953f !important;
+    color: #fcf6ba !important;
+    border-radius: 6px;
+    padding: 12px 15px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+    transition: all 0.2s;
+}
+
+    .luxury-crm-input:focus {
+        box-shadow: 0 0 15px rgba(191, 149, 63, 0.3), inset 0 0 10px rgba(0,0,0,0.8);
+    }
+
+    .luxury-crm-input::placeholder {
+        color: rgba(252, 246, 186, 0.4);
+    }
+
+.luxury-crm-label {
+    display: block;
+    font-size: 13px;
+    color: #bf953f;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.crm-left-mag {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: none !important;
+    border-right: 1px solid rgba(191, 149, 63, 0.3) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding-right: 25px;
+}
+
+.crm-right-mag {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding-left: 25px;
+    overflow: hidden;
+}
+
+/* ==========================================
+   GESTIONE CLIENTI
+========================================== */
+#modal-gestione-clienti .modal-box {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    background: #00050d !important; /* Sfondo dark profondo */
+    box-sizing: border-box;
+}
+
+.luxury-crm-input {
+    background: rgba(0, 5, 13, 0.8) !important;
+    border: 1px solid #bf953f !important;
+    color: #fcf6ba !important;
+    border-radius: 6px;
+    padding: 12px 15px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+    transition: all 0.2s;
+}
+
+    .luxury-crm-input:focus {
+        box-shadow: 0 0 15px rgba(191, 149, 63, 0.3), inset 0 0 10px rgba(0,0,0,0.8);
+    }
+
+    .luxury-crm-input::placeholder {
+        color: rgba(252, 246, 186, 0.4);
+    }
+
+.luxury-crm-label {
+    display: block;
+    font-size: 14px;
+    color: #bf953f;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.luxury-stat-box {
+    background: rgba(191, 149, 63, 0.1);
+    border: 1px solid #bf953f;
+    border-radius: 8px;
+    padding: 20px 15px;
+    flex: 1;
+    text-align: center;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+
+.luxury-stat-val {
+    font-size: 26px;
+    font-weight: bold;
+    color: #fcf6ba;
+    text-shadow: 0 0 10px rgba(252, 246, 186, 0.5);
+    margin-bottom: 5px;
+}
+
+.luxury-stat-lbl {
+    font-size: 13px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.crm-btn-azione {
+    border-radius: 6px;
+    padding: 0 12px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .crm-btn-azione:hover {
+        transform: translateY(-2px);
+    }
+
+/* ==========================================
+   CALENDARIO 
+========================================== */
+#modal-calendario .modal-box {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    background: #00050d !important;
+    box-sizing: border-box;
+}
+
+.crm-left-cal {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    border: none !important;
+    border-right: 1px solid rgba(191, 149, 63, 0.3) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding-right: 25px;
+}
+
+.crm-right-cal {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding-left: 25px;
+}
+
+.luxury-reg-card {
+    background: rgba(0, 10, 25, 0.8);
+    border: 1px solid #bf953f;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+
+    .luxury-reg-card.totale {
+        background: rgba(191, 149, 63, 0.15);
+        border-width: 2px;
+        box-shadow: 0 0 20px rgba(191, 149, 63, 0.2), inset 0 0 15px rgba(0,0,0,0.5);
+    }
+
+.luxury-reg-lbl {
+    font-size: 14px;
+    color: #bf953f;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.luxury-reg-val {
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+    .luxury-reg-val.big {
+        font-size: 32px;
+        color: #fcf6ba;
+        text-shadow: 0 0 10px rgba(252, 246, 186, 0.5);
+    }
+
+/* ==========================================
+   GESTIONE ORDINI
+========================================== */
+#modal-gestione-ordini .luxury-crm-input {
+    background: rgba(0, 5, 13, 0.8) !important;
+    border: 1px solid #bf953f !important;
+    color: #fcf6ba !important;
+    border-radius: 6px;
+    padding: 12px 15px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    appearance: auto;
+    cursor: pointer;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+
+#tabella-lista-ordini th {
+    color: #bf953f;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   GIFT CARD
+========================================== */
+#modal-dashboard-giftcard .luxury-crm-input {
+    background: rgba(0, 5, 13, 0.8) !important;
+    border: 1px solid #bf953f !important;
+    color: #fcf6ba !important;
+    border-radius: 6px;
+    padding: 8px 15px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+    appearance: auto;
+}
+
+    #modal-dashboard-giftcard .luxury-crm-input::placeholder {
+        color: rgba(252, 246, 186, 0.4);
+    }
+
+/* ==========================================
+   REGISTRO CASSA
+========================================== */
+#modal-registro-cassa .modal-box {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    background: #00050d !important;
+    box-sizing: border-box;
+}
+
+.crm-left-reg {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    border: none !important;
+    border-right: 1px solid rgba(191, 149, 63, 0.3) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding-right: 25px;
+}
+
+.crm-right-reg {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding-left: 25px;
+    overflow: hidden;
+}
+
+.luxury-reg-card {
+    background: rgba(0, 10, 25, 0.8);
+    border: 1px solid #bf953f;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+
+    .luxury-reg-card.totale {
+        background: rgba(191, 149, 63, 0.15);
+        border-width: 2px;
+        box-shadow: 0 0 20px rgba(191, 149, 63, 0.2), inset 0 0 15px rgba(0,0,0,0.5);
+        margin-bottom: 0;
+    }
+
+.luxury-reg-lbl {
+    font-size: 14px;
+    color: #bf953f;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.luxury-reg-val {
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+    .luxury-reg-val.verde {
+        color: #00cc66;
+    }
+
+    .luxury-reg-val.rosso {
+        color: #ff4d4d;
+    }
+
+    .luxury-reg-val.big {
+        font-size: 32px;
+        color: #fcf6ba;
+        text-shadow: 0 0 10px rgba(252, 246, 186, 0.5);
+    }
