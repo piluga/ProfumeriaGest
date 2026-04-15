@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cassa-pwa-v117';
+const CACHE_NAME = 'Essenziale_Boutique-v1';
 
 const ASSETS_TO_CACHE = [
     './',
